@@ -1,5 +1,4 @@
 # Inter- and intra-individual differences in β-band sensorimotor rhythm modulation and its relation to corticomuscular coherence in force-tracking tasks
-Jing Zhou, Junichi Ushiyama
  
 # EEG–EMG Analysis Pipeline
 
