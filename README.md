@@ -1,8 +1,9 @@
-# Time-resolved-modulation-of-β-band-sensorimotor-rhythm
-
+# Inter- and intra-individual differences in β-band sensorimotor rhythm modulation and its relation to corticomuscular coherence in force-tracking tasks
+Jing Zhou, Junichi Ushiyama
+ 
 # EEG–EMG Analysis Pipeline
 
-This repository contains MATLAB code used for EEG, EMG, torque, corticomuscular coherence (CMC), and SMR–CMC cross-correlation analyses.
+This repository contains MATLAB code used for EEG, EMG, force, corticomuscular coherence (CMC), and SMR–CMC cross-correlation analyses.
 
 The repository provides the complete analysis workflow used in the study. Raw experimental data are not included.
 
@@ -17,13 +18,13 @@ The analysis pipeline includes:
 * ΔSRBS–MRBD calculation
 * EEG–EMG corticomuscular coherence (CMC)
 * Identification of the CMC-related 3-Hz frequency band
-* Torque performance analysis using RMSE
+* Force performance analysis using RMSE
 * SMR–CMC cross-correlation analysis
 * Cross-task comparison of SMR–CMC temporal relationships
 
 ## Software Requirements
 
-The code was developed in MATLAB.
+The code was developed in MATLAB R2023a.
 
 Required software and toolboxes include:
 
@@ -113,14 +114,14 @@ Main analyses include:
 7. EEG–TA corticomuscular coherence using both rectified and non-rectified EMG.
 8. Identification of the 3-Hz frequency band showing maximum CMC.
 9. EEG power analysis within the CMC-selected frequency band.
-10. Torque-performance analysis.
+10. Force-performance analysis.
 
-Torque performance is evaluated using the middle 5 s of each trial.
+Force performance is evaluated using the middle 5 s of each trial.
 
 RMSE is calculated as:
 
 ```text
-RMSE = sqrt(mean((observed torque − target torque)^2))
+RMSE = sqrt(mean((observed force − target force)^2))
 ```
 
 RMSE is first calculated separately for each trial and then averaged across trials for each participant and task condition.
@@ -196,7 +197,7 @@ The original recordings contain synchronized EEG, EMG, and torque signals. The m
 For example, the main EEG/CMC analysis uses:
 
 ```text
-Column 1       Torque
+Column 1       Force
 Column 2       Cz
 Column 3       FCz
 Column 4       CPz
