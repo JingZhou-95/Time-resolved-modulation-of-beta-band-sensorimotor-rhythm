@@ -5,7 +5,7 @@
 %   2. EEG time-frequency power
 %   3. Beta-band power change: MRBD, SRBS, and Delta SRBS-MRBD
 %   4. Corticomuscular coherence (CMC) using TA EMG
-%   5. CMC-selected 3-Hz EEG power change
+%   5. CMC-selected 2-Hz EEG power change
 %   6. Torque performance using RMSE
 %
 % Supported task types:
@@ -390,7 +390,7 @@ ylabel('Beta CMC', ...
 xlabel('Time (s)', ...
     'FontName', 'Arial', 'FontSize', 20);
 
-%% Maximum 3-Hz CMC band: rectified EMG
+%% Maximum 2-Hz CMC band: rectified EMG
 meanCMC = zeros(21, numTimeWindows);
 
 for i = 16:36
@@ -423,7 +423,7 @@ xlabel('Time (s)', ...
 % of the corresponding 3-Hz band.
 Fmax = FmaxRow + 14;
 
-%% Maximum 3-Hz CMC band: non-rectified EMG
+%% Maximum 2-Hz CMC band: non-rectified EMG
 meannCMC = zeros(21, numTimeWindows);
 
 for i = 16:36
