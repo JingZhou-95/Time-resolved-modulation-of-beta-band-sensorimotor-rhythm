@@ -1,6 +1,4 @@
 %% EEG Preprocessing Pipeline
-% Version: 2
-% Date: 2023-11-20
 % Author: Jing
 %
 % Description:
