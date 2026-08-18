@@ -18,8 +18,10 @@ The analysis pipeline includes:
 * EEG–EMG corticomuscular coherence (CMC)
 * Identification of the CMC-related 3-Hz frequency band
 * Force performance analysis using RMSE
+* Correlation and partial-correlation analyses between CMC increase and β-band modulation measures
 * SMR–CMC cross-correlation analysis
 * Cross-task comparison of SMR–CMC temporal relationships
+* Repeated-measures correlation between β-band modulation and CMC
 
 ## Software Requirements
 
@@ -40,6 +42,13 @@ bs.m    Band-stop filter
 ```
 
 EEGLAB must be installed separately and added to the MATLAB path before running the preprocessing scripts.
+
+In addition to the MATLAB requirements listed above, the statistical analyses use R.
+Required R packages include:
+rmcorr
+dplyr
+ggplot2
+mblm
 
 ## Repository Structure
 
@@ -186,7 +195,6 @@ Main steps include:
 
 ---
 
-
 ## Data Format
 
 Raw data are not distributed with this repository.
@@ -206,6 +214,47 @@ Column 31      Tibialis anterior EMG
 ```
 
 Users applying the code to their own datasets should adapt the channel indices and experimental parameters as necessary.
+
+
+
+## Statistical Analysis in R
+
+### Repeated-measures correlation
+
+Examines the relationship between `ΔSRBS-MRBD` and `CMC` while accounting for repeated observations within participants.
+
+Main steps include:
+
+1. Calculate repeated-measures correlation using the `rmcorr` package.
+2. Calculate the observed within-subject correlation.
+3. Perform 10,000 within-subject permutations by shuffling `ΔSRBS-MRBD` values separately within each participant.
+4. Calculate a two-sided permutation P value.
+5. Plot the repeated-measures relationship.
+
+---
+
+### Correlation between CMC increase and β-band SMR modulation 
+
+Examines the relationships between CMC increase (`CMCinc`) and β-band modulation measures.
+
+Analyzed variables include:
+
+```text
+|MRBDmax|
+SRBSmax
+ΔSRBS–MRBD = SRBSmax + |MRBDmax|
+```
+
+Main analyses include:
+
+1. Spearman correlations between `CMCinc` and each β-band modulation measure.
+2. Nonparametric bootstrap 95% confidence intervals using 10,000 resamples.
+3. Two-sided permutation tests using 10,000 permutations.
+4. Partial Spearman correlation between `CMCinc` and `|MRBDmax|`, controlling for `SRBSmax`.
+5. Partial Spearman correlation between `CMCinc` and `SRBSmax`, controlling for `|MRBDmax|`.
+6. Freedman–Lane permutation tests for partial correlations.
+7. Theil–Sen robust trend lines for visualization.
+
 
 ## Data Availability
 
